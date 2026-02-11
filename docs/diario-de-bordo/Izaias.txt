@@ -1,0 +1,2 @@
+Gostei de ter aprendido git status, git add ., git checkout, git pull origin, git push origin.
+Porém no início tive muita dificuldade na atividade e no terminal. Enfim, na atividade ao todo.
