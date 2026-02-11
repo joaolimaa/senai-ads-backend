@@ -10,7 +10,7 @@ Linha 03:
 
 Linha 04:
 
-Linha 05: Mikael Gomes Rodrigues
+Linha 05:
 
 Linha 06:
 
