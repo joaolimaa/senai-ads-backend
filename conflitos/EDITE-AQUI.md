@@ -16,5 +16,5 @@ Linha 06:
 
 Linha 07: Diego Vinicius Rdrigues
 
-Linha 08:
+Linha 08: Jordanna de Jesus 
 
