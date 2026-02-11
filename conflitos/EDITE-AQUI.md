@@ -12,9 +12,9 @@ Linha 04:
 
 Linha 05:Izaias Silva da conceição
 
-Linha 06:
+Linha 06: Mikael Gomes Rodrigues
 
-Linha 07:
+Linha 07: Diego Vinicius Rdrigues
 
-Linha 08:
+Linha 08: Jordanna de Jesus 
 
