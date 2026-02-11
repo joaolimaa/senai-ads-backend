@@ -1,0 +1,5 @@
+Tenho bastante dúvidas ainda, mais aprendi o git commit -m, git add ., git branch,git status etc...
+
+Agora ficarei no pé do João Paulo e no pé dos meus colegas para poder aprender
+
+Obs: Ainda não resolvi um conflito quero aprender como faz.
