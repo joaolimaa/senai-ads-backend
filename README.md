@@ -40,5 +40,6 @@ Adicione seu nome abaixo conforme instruções da atividade.
 * João Paulo de Lima Gonçalves
 * Jordanna de Jesus Ribeiro Porto
 * Mikael Gomes Rodrigues
+* Izaias Silva 
 
 

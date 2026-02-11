@@ -1,5 +1,4 @@
 
-=======
 Bora 😊 Aqui vai uma **receita simples de salgado assado**, bem fácil e econômica — ótima pra lanche ou vender.
 
 ## Salgado Assado Simples (massa básica)
@@ -49,4 +48,4 @@ Se quiser, posso te passar:
 * ou uma opção **bem barata pra vender**
 
 É só dizer 😉
->>>>>>> 03297e06771912d52ebb84bb45f5eba857d1b8fc
+
