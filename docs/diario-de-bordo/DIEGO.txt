@@ -1,0 +1,5 @@
+Minha maior dificuldade foi decorar os 	"gits" e ter um pouco de atenção em qual "branch" eu estava(Acabei subindo pra "main".
+
+Entendi para o que serve cada comando.
+
+As vezes estou esquecendo de da o "commit"
