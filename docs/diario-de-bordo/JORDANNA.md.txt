@@ -1,0 +1,4 @@
+Eu aprendi os seguintes comandos: "git status, git add ., git commit -m, git pull origin" e etc.
+
+Creio que minha dificuldade é somente decorar as ordens dos git's e resolver conflitos causados pelo meu coleguinha, e ter mais práticas.
+
