@@ -1,5 +1,5 @@
-# SENAI ADS – Repositório Oficial da Turma de Desenvolvimento de Sistemas
 
+<<<<<<< Updated upstream
 # Sobre este repositório
 
 Este repositório foi criado para apoiar as atividades práticas da turma de **Análise e Desenvolvimento de Sistemas (ADS)** do SENAI.
@@ -43,3 +43,6 @@ Adicione seu nome abaixo conforme instruções da atividade.
 * Izaias Silva 
 * Cauã Rodrigues
 * Cauã Ribeiro
+=======
+
+>>>>>>> Stashed changes
