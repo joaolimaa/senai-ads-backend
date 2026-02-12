@@ -1,4 +1,0 @@
-Então, no começo eu tava entendendo nada, mas no final parece que eu tava no começo...
-
-
-Eu decorei muita coisa, git clone, aprendi o git add e pra que ser o "git add .", entendi o git commit, e etc... A única dificuldade foi aprender o git checkout que fiquei meio perdido, mas de resto SHOW!
