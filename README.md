@@ -1,6 +1,6 @@
 Sistema de Biblioteca (CLI)
 
-👥 Dupla 1 — Módulo de Livros
+👥 Dupla 1 — Módulo de Livros: Responsáveis (Jordana e Diego)
 
 Entrega:
 
@@ -22,7 +22,7 @@ Branch: feature/livros
 
 ---
 
-👥 Dupla 2 — Módulo de Usuários
+👥 Dupla 2 — Módulo de Usuários: Responsáveis (Caio e Isaias)
 
 Entrega:
 
@@ -42,7 +42,7 @@ Branch: feature/usuarios
 
 ---
 
-👥 Dupla 3 — Módulo de Empréstimos (Regras)
+👥 Dupla 3 — Módulo de Empréstimos (Regras): Responsáveis (Cauan e Kauan)
 
 Entrega:
 
@@ -72,7 +72,7 @@ Branch: feature/emprestimos
 
 ---
 
-👥 Dupla 4 — Interface (Menu) + Integração Final
+👥 Dupla 4 — Interface (Menu) + Integração Final: Responsáveis (Mikael e Danilo)
 
 Essa dupla é a “cola” do sistema.
 
@@ -119,3 +119,4 @@ livro está disponível
 Ao devolver, livro volta a ficar disponível
 
 Menu funcionando sem crash (tratando entrada inválida)
+
