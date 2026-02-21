@@ -1,122 +1,53 @@
-Sistema de Biblioteca (CLI)
+public class GerenciadorTarefa {
 
-👥 Dupla 1 — Módulo de Livros: Responsáveis (Jordana e Diego)
+    private static final int LIMITE = 10;
+    private static Scanner scanner = new Scanner(System.in);
+    private static String[] tarefas = new String[LIMITE];
+    private static boolean[] concluidas = new boolean[LIMITE];
+    private static int quantidade = 0;
 
-Entrega:
+    static void main() {
+        int opcoes = 0;
 
-model/Livro.java
+        while (opcoes != 6) {
+            exibirMenu();
 
-id, titulo, autor, ano, disponivel
+            try {
+                opcoes = scanner.nextInt();
+                scanner.nextLine();
 
-service/LivroService.java
+                if (opcoes == 1) {
+                    adicionarTarefa();
+                } else if (opcoes == 2) {
+                    listarTarefas();
+                } else if (opcoes == 3) {
+                    marcarConcluida();
+                } else if (opcoes == 4) {
+                    removerTarefa();
+                } else if (opcoes == 5) {
+                    estatisticas();
+                } else if (opcoes == 6) {
+                    System.out.println("Encerrando... até mais!");
+                } else {
+                    System.out.println("Opção inválida. Tente novamente.");
+                }
 
-cadastrarLivro()
+            } catch (Exception e) {
+                System.out.println("Erro: digite apenas NÚMEROS.");
+                scanner.nextLine();
+            }
+        }
 
-listarLivros()
+        scanner.close();
+    }
 
-buscarPorId(int id)
-
-buscarPorTitulo(String termo) (simples)
-
-Branch: feature/livros
-
----
-
-👥 Dupla 2 — Módulo de Usuários: Responsáveis (Caio e Isaias)
-
-Entrega:
-
-model/Usuario.java
-
-id, nome, cpf ou email
-
-service/UsuarioService.java
-
-cadastrarUsuario()
-
-listarUsuarios()
-
-buscarPorId(int id)
-
-Branch: feature/usuarios
-
----
-
-👥 Dupla 3 — Módulo de Empréstimos (Regras): Responsáveis (Cauan e Kauan)
-
-Entrega:
-
-model/Emprestimo.java
-
-id, idUsuario, idLivro, dataEmprestimo, dataDevolucao (opcional)
-
-service/EmprestimoService.java
-
-emprestarLivro(idUsuario, idLivro)
-
-não deixa emprestar se livro indisponível
-
-valida usuário e livro existentes
-
-devolverLivro(idEmprestimo)
-
-marca devolução
-
-torna livro disponível
-
-listarEmprestimos()
-
-listarEmprestimosAbertos()
-
-Branch: feature/emprestimos
-
----
-
-👥 Dupla 4 — Interface (Menu) + Integração Final: Responsáveis (Mikael e Danilo)
-
-Essa dupla é a “cola” do sistema.
-
-Entrega:
-
-menu/MenuPrincipal.java com opções:
-
-Cadastrar livro
-
-Listar livros
-
-Cadastrar usuário
-
-Listar usuários
-
-Emprestar livro
-
-Devolver livro
-
-Listar empréstimos
-
-Sair
-
-Main.java chamando o menu
-
-Integração usando os Services das outras duplas
-
-Branch: feature/menu-integracao
-
----
-
-Critérios de aceite
-
-Dá pra cadastrar e listar livros/usuários
-
-Empréstimo só acontece se:
-
-usuário existe
-
-livro existe
-
-livro está disponível
-
-Ao devolver, livro volta a ficar disponível
-
-Menu funcionando sem crash (tratando entrada inválida)
-
+    static void exibirMenu() {
+        System.out.println("\n===== GERENCIADOR DE TAREFAS =====");
+        System.out.println("1 - Adicionar tarefa");
+        System.out.println("2 - Listar tarefas");
+        System.out.println("3 - Marcar tarefa como concluída");
+        System.out.println("4 - Remover tarefa");
+        System.out.println("5 - Ver estatísticas");
+        System.out.println("6 - Sair");
+        System.out.print("Escolha uma opção: ");
+    }
