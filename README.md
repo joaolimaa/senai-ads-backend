@@ -1,3 +1,8 @@
+```bash
+package br.com;
+
+import java.util.Scanner;
+
 public class GerenciadorTarefa {
 
     private static final int LIMITE = 10;
@@ -17,15 +22,15 @@ public class GerenciadorTarefa {
                 scanner.nextLine();
 
                 if (opcoes == 1) {
-                    adicionarTarefa();
+//                    adicionarTarefa();
                 } else if (opcoes == 2) {
-                    listarTarefas();
+//                    listarTarefas();
                 } else if (opcoes == 3) {
-                    marcarConcluida();
+//                    marcarConcluida();
                 } else if (opcoes == 4) {
-                    removerTarefa();
+//                    removerTarefa();
                 } else if (opcoes == 5) {
-                    estatisticas();
+//                    estatisticas();
                 } else if (opcoes == 6) {
                     System.out.println("Encerrando... até mais!");
                 } else {
@@ -42,12 +47,15 @@ public class GerenciadorTarefa {
     }
 
     static void exibirMenu() {
-        System.out.println("\n===== GERENCIADOR DE TAREFAS =====");
-        System.out.println("1 - Adicionar tarefa");
-        System.out.println("2 - Listar tarefas");
-        System.out.println("3 - Marcar tarefa como concluída");
-        System.out.println("4 - Remover tarefa");
-        System.out.println("5 - Ver estatísticas");
-        System.out.println("6 - Sair");
-        System.out.print("Escolha uma opção: ");
+        System.out.println("""
+        ===== GERENCIADOR DE TAREFAS =====
+        1- Adicionar tarefa 
+        2- Listar tarefas
+        3- Marcar como concluídas
+        4- Remover tarefa
+        5- Estatísticas
+        6- Sair
+        Escolha uma opção:  
+        """);
     }
+}
