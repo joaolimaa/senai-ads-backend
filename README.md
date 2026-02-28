@@ -1,4 +1,3 @@
-```bash
 package br.com;
 
 import java.util.Scanner;
@@ -22,9 +21,9 @@ public class GerenciadorTarefa {
                 scanner.nextLine();
 
                 if (opcoes == 1) {
-//                    adicionarTarefa();
+                    adicionarTarefa();
                 } else if (opcoes == 2) {
-//                    listarTarefas();
+                    listarTarefas();
                 } else if (opcoes == 3) {
 //                    marcarConcluida();
                 } else if (opcoes == 4) {
@@ -44,6 +43,30 @@ public class GerenciadorTarefa {
         }
 
         scanner.close();
+    }
+
+    static void adicionarTarefa(){
+
+        if (quantidade >= tarefas.length){
+            System.out.println("Limite de tarefas atingido!");
+            return;
+        }
+
+        System.out.println("Digite sua tarefa: ");
+        tarefas[quantidade] = scanner.nextLine();
+        quantidade++;
+        System.out.println("Tarefa Adicionada!");
+    }
+
+    static void listarTarefas(){
+
+        if (quantidade == 0){
+            System.out.println("Nunhuma tarefa adicionada!");
+            return;
+        }
+        for (int i = 0; i < quantidade; i++)
+        System.out.println((i+1) + " "+ tarefas[i]);
+
     }
 
     static void exibirMenu() {
