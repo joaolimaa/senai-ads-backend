@@ -1,5 +1,6 @@
 package br.com;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GerenciadorTarefa {
@@ -25,7 +26,7 @@ public class GerenciadorTarefa {
                 } else if (opcoes == 2) {
                     listarTarefas();
                 } else if (opcoes == 3) {
-//                    marcarConcluida();
+                    marcarConcluida();
                 } else if (opcoes == 4) {
 //                    removerTarefa();
                 } else if (opcoes == 5) {
@@ -59,14 +60,38 @@ public class GerenciadorTarefa {
     }
 
     static void listarTarefas(){
+        if (listaVazia()) return;
 
+        for (int i = 0; i < quantidade; i++)
+            System.out.println((i+1) + " - "+ tarefas[i]);
+
+    }
+
+    static void marcarConcluida(){
+        if (listaVazia()) return;
+        listarTarefas();
+
+        System.out.println("Qual tarefa deseja concluir? ");
+
+        int posicaoTarefaConcluida = scanner.nextInt();
+        scanner.nextLine();
+
+
+
+        concluidas[posicaoTarefaConcluida] = true;
+
+
+
+
+
+    }
+
+    static boolean listaVazia(){
         if (quantidade == 0){
             System.out.println("Nunhuma tarefa adicionada!");
-            return;
+            return true;
         }
-        for (int i = 0; i < quantidade; i++)
-        System.out.println((i+1) + " "+ tarefas[i]);
-
+        return false;
     }
 
     static void exibirMenu() {
@@ -82,3 +107,4 @@ public class GerenciadorTarefa {
         """);
     }
 }
+
