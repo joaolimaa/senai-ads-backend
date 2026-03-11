@@ -58,19 +58,16 @@ public class GerenciadorTarefa {
         System.out.println("Tarefa Adicionada!");
     }
 
-    static void listarTarefas(){
+    static void listarTarefas() {
         if (validarListaVazia()) return;
 
-        for (int i = 0; i < quantidade; i++) {
+        System.out.println("\n----- LISTA DE TAREFAS -----");
 
-            if (tarefas[i] != null && i == 0) {
-                System.out.println((i) + " - " + tarefas[i] + " - " + selecionarConcluida(concluidas[i]));
-            } else if (tarefas[i] != null) {
-                System.out.println((i - 1) + " - " + tarefas[i] + " - " + selecionarConcluida(concluidas[i]));
-            }
+        for (int posicao = 0; posicao < quantidade; posicao++) {
+            System.out.println((posicao + 1) + " - " + tarefas[posicao] + " - " + selecionarConcluida(concluidas[posicao]));
         }
     }
-
+    
     static void marcarConcluida() {
         if (validarListaVazia())
             return;
