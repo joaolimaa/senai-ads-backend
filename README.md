@@ -13,7 +13,7 @@ public class GerenciadorTarefa {
     static void main() {
         int opcoes = 0;
 
-        while (opcoes != 6) {
+        while (opcoes != 5) {
             exibirMenu();
 
             try {
@@ -29,8 +29,6 @@ public class GerenciadorTarefa {
                 } else if (opcoes == 4) {
                    removerTarefa();
                 } else if (opcoes == 5) {
-//                    estatisticas();
-                } else if (opcoes == 6) {
                     System.out.println("Encerrando... até mais!");
                 } else {
                     System.out.println("Opção inválida. Tente novamente.");
@@ -67,7 +65,7 @@ public class GerenciadorTarefa {
             System.out.println((posicao + 1) + " - " + tarefas[posicao] + " - " + selecionarConcluida(concluidas[posicao]));
         }
     }
-    
+
     static void marcarConcluida() {
         if (validarListaVazia())
             return;
@@ -92,11 +90,7 @@ public class GerenciadorTarefa {
 
         listarTarefas();
         System.out.println("Qual tarefa deseja remover? ");
-        int posicao = scanner.nextInt();
-        scanner.nextLine();
 
-        tarefas[posicao -1] = null;
-        System.out.println("Tarefa removida!");
     }
 
     // MÉTODOS AUXILIARES
