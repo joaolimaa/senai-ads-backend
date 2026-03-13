@@ -1,5 +1,6 @@
 package br.com;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GerenciadorDeTarefas {
@@ -118,8 +119,25 @@ public class GerenciadorDeTarefas {
         }
 
         listarTarefas();
-        System.out.print("Digite a opção que deseja remover!");
+        System.out.print("Digite a tarefa que deseja remover!");
         int numero = scanner.nextInt();
+
+        int indice = numero - 1;
+
+        if (indice < 0 || indice >= quantidade) {
+            System.out.println("Número inválido!");
+            return;
+        }
+        for (int i = indice; i < quantidade - 1; i++){
+
+            tarefas[i] = tarefas[i + 1];
+            concluidas[i] = concluidas[i + 1];
+        }
+        quantidade--;
+
+        System.out.println("Tarefa removida!");
+
     }
 
 }
+
