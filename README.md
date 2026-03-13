@@ -1,14 +1,14 @@
 package br.com;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GerenciadorTarefa {
 
     private static final int LIMITE = 10;
     private static Scanner scanner = new Scanner(System.in);
-    private static String[] tarefas = new String[LIMITE];
-    private static boolean[] concluidas = new boolean[LIMITE];
-    private static int quantidade = 0;
+    private static ArrayList<String> tarefas = new ArrayList<>();
+    private static ArrayList<Boolean> concluidas = new ArrayList<>();
 
     static void main() {
         int opcoes = 0;
@@ -29,13 +29,13 @@ public class GerenciadorTarefa {
                 } else if (opcoes == 4) {
                    removerTarefa();
                 } else if (opcoes == 5) {
-                    System.out.println("Encerrando... até mais!");
+                    System.out.println("\nEncerrando... até mais!\n");
                 } else {
-                    System.out.println("Opção inválida. Tente novamente.");
+                    System.out.println("\nOpção inválida. Tente novamente.\n");
                 }
 
             } catch (Exception e) {
-                System.out.println("Erro: digite apenas NÚMEROS.");
+                System.out.println("\nErro: digite apenas NÚMEROS.\n");
                 scanner.nextLine();
             }
         }
@@ -45,24 +45,24 @@ public class GerenciadorTarefa {
 
     static void adicionarTarefa(){
 
-        if (quantidade >= tarefas.length){
-            System.out.println("Limite de tarefas atingido!");
+        if (tarefas.size() >= LIMITE){
+            System.out.println("\nLimite de tarefas atingido!\n");
             return;
         }
 
-        System.out.println("Digite sua tarefa: ");
-        tarefas[quantidade] = scanner.nextLine();
-        quantidade++;
-        System.out.println("Tarefa Adicionada!");
+        System.out.println("\nDigite sua tarefa: \n");
+        tarefas.add(scanner.nextLine());
+        concluidas.add(false);
+        System.out.println("\nTarefa Adicionada!\n");
     }
 
     static void listarTarefas() {
         if (validarListaVazia()) return;
 
-        System.out.println("\n----- LISTA DE TAREFAS -----");
+        System.out.println("\n----- LISTA DE TAREFAS -----\n");
 
-        for (int posicao = 0; posicao < quantidade; posicao++) {
-            System.out.println((posicao + 1) + " - " + tarefas[posicao] + " - " + selecionarConcluida(concluidas[posicao]));
+        for (int posicao = 0; posicao < tarefas.size(); posicao++) {
+            System.out.println((posicao+1) + " - " + tarefas.get(posicao) + " - " + selecionarConcluida(concluidas.get(posicao)));
         }
     }
 
@@ -72,16 +72,16 @@ public class GerenciadorTarefa {
 
         listarTarefas();
 
-        System.out.println("Qual tarefa deseja concluir? ");
+        System.out.println("\nQual tarefa deseja concluir? \n");
         int posicao = scanner.nextInt();
         scanner.nextLine();
 
-        if (posicao >= 0 || posicao < quantidade) {
-            concluidas[posicao - 1] = true;
-            System.out.println("Tarefa concluída!");
+        if (posicao > 0 || posicao < tarefas.size()) {
+            concluidas.set(posicao-1,true);
+            System.out.println("\nTarefa concluída!\n");
         }
         else {
-            System.out.println("Tarefa inválida.");
+            System.out.println("\nTarefa inválida.\n");
         }
     }
 
@@ -89,15 +89,26 @@ public class GerenciadorTarefa {
         if (validarListaVazia()) return;
 
         listarTarefas();
-        System.out.println("Qual tarefa deseja remover? ");
+
+        System.out.println("\nQual tarefa deseja remover? \n");
+        int posicao = scanner.nextInt();
+        scanner.nextLine();
+
+        if (posicao <= tarefas.size()){
+            tarefas.remove(posicao-1);
+            concluidas.remove(posicao-1);
+            System.out.println("\nTarefa removida!\n");
+        } else {
+            System.out.println("\nTarefa inválida.\n");
+        }
 
     }
 
     // MÉTODOS AUXILIARES
 
     static boolean validarListaVazia(){
-        if (quantidade == 0){
-            System.out.println("Nunhuma tarefa adicionada!");
+        if (tarefas.isEmpty()){
+            System.out.println("\nNunhuma tarefa adicionada!\n");
             return true;
         }
         return false;
@@ -113,12 +124,14 @@ public class GerenciadorTarefa {
     static void exibirMenu() {
         System.out.println("""
         ===== GERENCIADOR DE TAREFAS =====
+        
         1- Adicionar tarefa 
         2- Listar tarefas
         3- Marcar como concluídas
         4- Remover tarefa
         5- Estatísticas
         6- Sair
+        
         Escolha uma opção:  
         """);
     }
