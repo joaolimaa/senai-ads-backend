@@ -1,0 +1,91 @@
+package br.com;
+import java.util.Scanner;
+public class SistemaIngressos {
+    static Scanner scanner = new Scanner(System.in);
+    static int ingressosDisponiveis = 100;
+    static int vendidos = 0;
+    static int meia = 0;
+    static int inteira = 0;
+    static double precoInteira = 40.0;
+    static double precoMeia = 20.0;
+    static double valorArrecadado = 0;
+
+    public static void main(String[] args) {
+        int opcao = 0;
+        while (opcao != 5) {
+            exibirMenu();
+            try {
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+                if (opcao == 1) {
+                    comprarIngressos();
+                } else if (opcao == 2) {
+                    cancelarCompra();
+                } else if (opcao == 3) {
+                    consultarSituacao();
+                } else if (opcao == 4) {
+                    mostrarArrecadado();
+                } else if (opcao == 5) {
+                    System.out.println("Sistema encerrado.");
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+            } catch (Exception e) {
+                System.out.println("Erro: digite apenas números.");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    static void exibirMenu() {
+        System.out.println("\n===== MENU =====");
+        System.out.println("1 - Comprar ingressos");
+        System.out.println("2 - Cancelar compra");
+        System.out.println("3 - Consultar situação");
+        System.out.println("4 - Valor arrecadado");
+        System.out.println("5 - Sair");
+        System.out.print("Escolha: ");
+    }
+
+    static void comprarIngressos() {
+        System.out.println("==== COMPRA DE INGRESSOS====");
+        System.out.println("Digite o tipo de ingresso (1 - Inteira) (2 - meia): ");
+        int tipoIngresso = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Digite a quantidade de ingressos que vc deseja: ");
+        int quantidadeDesejada = scanner.nextInt();
+        scanner.nextLine();
+
+
+        if (tipoIngresso == 1) {
+            System.out.println(precoInteira * quantidadeDesejada);
+            inteira++;
+            valorArrecadado++;
+        }else if (tipoIngresso == 2) {
+            meia++;
+            valorArrecadado++;
+        } else {
+            System.out.println("Tipo inválido, digite tipo válido! ");
+        }
+        ingressosDisponiveis--;
+        vendidos++;
+
+
+
+
+
+    }
+
+    static void cancelarCompra() {
+        // implementar
+    }
+
+    static void consultarSituacao() {
+        // implementar
+    }
+
+    static void mostrarArrecadado() {
+        // implementar
+    }
+}
