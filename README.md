@@ -64,6 +64,7 @@ public class SistemaIngressos {
             System.out.print("Digite seu CPF: ");
             String cpf = scanner.nextLine();
 
+
             if (compras.containsKey(cpf)) {
                 System.out.println("Já existe compra para esse CPF.");
                 return;
@@ -74,9 +75,11 @@ public class SistemaIngressos {
 
             System.out.print("Digite sua Idade: ");
             int idade = scanner.nextInt();
+            scanner.nextLine();
 
             System.out.print("Quantidade de ingressos (Máx. 5): ");
             int qtd = scanner.nextInt();
+            scanner.nextLine();
 
             if (qtd <= 0 || qtd > 5) {
                 System.out.println("Quantidade inválida!");
@@ -88,30 +91,24 @@ public class SistemaIngressos {
                 return;
             }
 
-            System.out.println("1 - Inteira");
-            System.out.println("2 - Meia");
-            int tipo = scanner.nextInt();
-            scanner.nextLine();
+            int tipo = tipoIngresso();
 
-            double valor = 0;
+            double valor;
 
             if (tipo == 1) {
                 valor = qtd * precoInteira;
                 inteira += qtd;
 
             } else if (tipo == 2) {
-                System.out.print("É estudante? (s/n): ");
-                String estudante = scanner.nextLine();
-
-                if (estudante.equalsIgnoreCase("s") || idade <= 21 || idade >= 60) {
+                if (validarMeia(idade)) {
                     valor = qtd * precoMeia;
                     meia += qtd;
-                } else {
+                } else{
                     System.out.println("Sem direito à meia.");
                     return;
                 }
-
-            } else {
+            }
+            else {
                 System.out.println("Tipo inválido.");
                 return;
             }
@@ -177,150 +174,25 @@ public class SistemaIngressos {
     static void mostrarArrecadado() {
         System.out.println("\nTotal arrecadado: R$ " + valorArrecadado);
     }
+
+    // MÉTODOS AUXILIARES
+
+    static int tipoIngresso() {
+        System.out.println("1 - Inteira");
+        System.out.println("2 - Meia");
+        System.out.print("Tipo de ingresso: ");
+
+        int tipo = scanner.nextInt();
+        scanner.nextLine();
+        return tipo;
+    }
+
+    static boolean validarMeia(int idade) {
+        System.out.print("É estudante? (s/n): ");
+        String estudante = scanner.nextLine();
+
+        return estudante.equalsIgnoreCase("s") || idade <= 21 || idade >= 60;
+    }
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//package br.com;
-//
-//import java.util.Scanner;
-//public class SistemaIngressos {
-//    static Scanner scanner = new Scanner(System.in);
-//    static final int LIMITE = 100;
-//    static int vendidos = 0;
-//    static int meia = 0;
-//    static int inteira = 0;
-//    static double precoInteira = 40.0;
-//    static double precoMeia = 20.0;
-//    static double valorArrecadado = 0;
-//    static void main() {
-//        int opcao = 0;
-//        while (opcao != 5) {
-//            exibirMenu();
-//            try {
-//                opcao = scanner.nextInt();
-//                scanner.nextLine();
-//                if (opcao == 1) {
-//                    comprarIngressos();
-//                } else if (opcao == 2) {
-//                    //cancelarCompra();
-//                } else if (opcao == 3) {
-//                    //consultarSituacao();
-//                } else if (opcao == 4) {
-//                    //mostrarArrecadado();
-//                } else if (opcao == 5) {
-//                    System.out.println("Sistema encerrado.");
-//                } else {
-//                    System.out.println("Opção inválida.");
-//                }
-//            } catch (Exception e) {
-//                System.out.println("Erro: digite apenas números.");
-//                scanner.nextLine();
-//            }
-//        }
-//    }
-//    static void exibirMenu() {
-//        System.out.println("\n===== MENU =====");
-//        System.out.println("1 - Comprar ingressos");
-//        System.out.println("2 - Cancelar compra");
-//        System.out.println("3 - Consultar situação");
-//        System.out.println("4 - Valor arrecadado");
-//        System.out.println("5 - Sair");
-//        System.out.print("Escolha: ");
-//    }
-//    static void comprarIngressos() {
-//
-//        try {
-//            System.out.print("CPF: ");
-//            String cpf = scanner.nextLine();
-//
-//            System.out.print("Nome: ");
-//            String nome = scanner.nextLine();
-//
-//            System.out.print("Idade: ");
-//            int idade = scanner.nextInt();
-//
-//            System.out.print("Quantidade de ingressos: (Máx. 5)");
-//            int qtd = scanner.nextInt();
-//
-//            if (qtd <= 0 || qtd > 5) {
-//                System.out.println("Quantidade de inválida! (Máx. 5)");
-//                return;
-//            }
-//
-//            System.out.println("1 - Inteira");
-//            System.out.println("2 - Meia");
-//
-//            int tipo = scanner.nextInt();
-//            scanner.nextLine();
-//
-//            double valor = 0;
-//
-//            if (tipo == 1) {
-//                valor = qtd * precoInteira;
-//                inteira += qtd;
-//
-//            } else if (tipo == 2) {
-//                System.out.print("É estudante? (s/n): ");
-//                String estudante = scanner.nextLine();
-//
-//                if (estudante.equalsIgnoreCase("s") || idade <= 21 || idade >= 60) {
-//                    valor = qtd * precoMeia;
-//                    meia += qtd;
-//
-//                } else {
-//                    System.out.println("Cliente não possui direito à meia entrada.");
-//                    return;
-//                }
-//
-//            }
-//            vendidos += qtd;
-//            valorArrecadado += valor;
-//
-//            System.out.println("Compra Realizada para " + nome + "!");
-//            System.out.println("Valor: " + valor);
-//
-//        } catch (Exception e) {
-//            System.out.println("Erro na compra.");
-//        }
-//    }
-//
-//    static void cancelarCompra() {
-//        // implementar
-//    }
-//    static void consultarSituacao() {
-//
-//        System.out.println("Total vendidos: " + vendidos);
-//        System.out.println("Inteiras: " + inteira);
-//        System.out.println("Meias: " + meia);
-//        System.out.println("Disponíveis: " + (LIMITE - vendidos));
-//    }
-//    static void mostrarArrecadado() {
-//
-//        System.out.println("Valor total arrecadado: R$ " + valorArrecadado);
-//    }
-//
-//    // ==== MÉTODOS AUXILIARES ====
-//
-//
-//}
