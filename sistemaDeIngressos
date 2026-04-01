@@ -1,0 +1,131 @@
+package br.com;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+
+public class SistemaIngressos {
+    static Scanner scanner = new Scanner(System.in);
+    static final int INGRESSOS_DISPONIBILIZADOS = 100;
+    static int ingressosDisponiveis = 100;
+    static final int COMPRA_MAXIMA_POR_PESSOA = 5;
+    static int vendidos = 0;
+    static int meia = 0;
+    static int inteira = 0;
+    static double precoInteira = 40.0;
+    static double precoMeia = 20.0;
+    static double valorArrecadado = 0;
+    static HashMap<String, Integer> id = new HashMap<>();
+
+    static void main(String[] args) {
+        int opcao = 0;
+        while (opcao != 5) {
+            exibirMenu();
+            try {
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+                if (opcao == 1) {
+                    comprarIngressos();
+                } else if (opcao == 2) {
+                    cancelarCompra();
+                } else if (opcao == 3) {
+                    consultarSituacao();
+                } else if (opcao == 4) {
+                    mostrarArrecadado();
+                } else if (opcao == 5) {
+                    System.out.println("Sistema encerrado.");
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+            } catch (Exception e) {
+                System.out.println("Erro: digite apenas números.");
+                scanner.nextLine();
+            }
+        }
+    }
+    static void exibirMenu() {
+        System.out.println("""
+        ===== MENU =====
+        1 - Comprar ingressos
+        2 - Cancelar compra
+        3 - Consultar situação
+        4 - Valor arrecadado
+        5 - Sair
+        Escolha: 
+        """);
+    }
+    static void comprarIngressos() {
+        System.out.println("Digite seus dados: ");
+        System.out.println("CPF: ");
+        String cpf = scanner.nextLine();
+
+
+        System.out.println("Quantidade de ingressos que deseja comprar: ");
+        int quantidadeCompradaCliente = scanner.nextInt();
+
+        if (quantidadeCompradaCliente == 0){
+            System.out.println("A quantidade de ingressos não pode ser 0");
+            return;
+        }
+
+
+        int jaComprados = id.getOrDefault(cpf, 0);
+        int total = jaComprados + quantidadeCompradaCliente;
+
+        if (total > COMPRA_MAXIMA_POR_PESSOA){
+            System.out.println("Limite máximo por CPF é " + COMPRA_MAXIMA_POR_PESSOA);
+            System.out.println("Você já comprou " + jaComprados + " ingressos.");
+            return;
+        }
+        System.out.println("Qual é a sua idade: ");
+        int idade = scanner.nextInt();
+
+        id.put(cpf, total);
+        if (idade <= 21 || idade >= 60){
+            valorArrecadado += precoMeia * quantidadeCompradaCliente;
+            meia += quantidadeCompradaCliente;
+            System.out.println("Paga meia entrada, valor: " + precoMeia * quantidadeCompradaCliente);
+
+
+        }else {
+            valorArrecadado += precoInteira * quantidadeCompradaCliente;
+            inteira += quantidadeCompradaCliente;
+            System.out.println("Paga entrada inteira, valor: " + precoInteira * quantidadeCompradaCliente);
+        }
+        vendidos += quantidadeCompradaCliente;
+        ingressosDisponiveis -= quantidadeCompradaCliente;
+    }
+
+    static void cancelarCompra() {
+        System.out.println("Qual o cpf da compra que deseja cancelar?");
+        String cpf = scanner.nextLine();
+
+        if (!id.containsKey(cpf)) {
+            System.out.println("CPF não encontrado.");
+            return;
+        }
+
+        int quantidade = id.get(cpf);
+        id.remove(cpf);
+
+        vendidos -= quantidade;
+        ingressosDisponiveis += quantidade;
+        valorArrecadado -= quantidade * precoInteira;
+//        valorArrecadado -= quantidade * precoMeia;
+
+    }
+    static void consultarSituacao() {
+        System.out.println("=== Quantidade de ingressos disponibilizados neste evento ===");
+        System.out.println(INGRESSOS_DISPONIBILIZADOS);
+
+        System.out.println("\n=== Quantidade de ingressos ainda disponíveis ===");
+        System.out.println(ingressosDisponiveis);
+
+        System.out.println("\nForam vendidos: " + vendidos + " ingressos");
+
+    }
+    static void mostrarArrecadado() {
+        System.out.println("=== Valor total arrecadado ===");
+        System.out.println(valorArrecadado);
+    }
+}
